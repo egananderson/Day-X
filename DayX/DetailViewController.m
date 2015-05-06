@@ -8,6 +8,8 @@
 
 #import "DetailViewController.h"
 #import "EntryController.h"
+#import "Entry.h"
+
 
 @interface DetailViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textField;
@@ -19,6 +21,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self updateWithEntryMethod:self.entry];
+    
     // Do any additional setup after loading the view.
 }
 - (IBAction)clearButtonTapped:(id)sender {
@@ -34,9 +39,29 @@
     
 }
 - (IBAction)saveButtonTapped:(id)sender {
-    EntryController *entryController = [EntryController new];
-    [entryController createEntryWithTitle:self.textField.text withBodyText:self.textView.text];
+//    EntryController *entryController = [EntryController new];
+//    [entryController createEntryWithTitle:self.textField.text withBodyText:self.textView.text];
+    
+    if (!self.entry) {
+        self.entry = [[EntryController sharedInstance] createEntryWithTitle:self.textField.text withBodyText:self.textView.text];
+    }
+    else{
+        [self updateWithEntryMethod:self.entry];
+    }
+    
+    [self.navigationController popViewControllerAnimated:YES];
+    
+    
+    
+    //add this instance of entrycontrooler to tablview
 
+}
+
+- (void) updateWithEntryMethod:(Entry *)entry
+{
+    self.textField.text = entry.title;
+    self.textView.text = entry.bodyText;
+    
 }
 
 - (void)didReceiveMemoryWarning {

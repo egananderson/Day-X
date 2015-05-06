@@ -9,18 +9,21 @@
 #import "ListTableViewDataSource.h"
 #import "EntryController.h"
 
+
 @implementation ListTableViewDataSource
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    EntryController *newEntryController = [EntryController new];
-    UITableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    cell.textLabel.text = newEntryController.entries[indexPath.row];
+    Entry *entry = [EntryController sharedInstance].entries[indexPath.row];
     
-return cell;
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    
+    cell.textLabel.text = entry.title;
+    
+    return cell;
     
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    EntryController *newEntryController = [EntryController new];
-    return newEntryController.entries.count;
+    return [EntryController sharedInstance].entries.count;
+
 }
 @end
