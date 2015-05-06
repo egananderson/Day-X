@@ -7,6 +7,7 @@
 //
 
 #import "DetailViewController.h"
+#import "EntryController.h"
 
 @interface DetailViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *textField;
@@ -31,6 +32,11 @@
     
     return YES;
     
+}
+- (IBAction)saveButtonTapped:(id)sender {
+    EntryController *entryController = [EntryController new];
+    [entryController createEntryWithTitle:self.textField.text withBodyText:self.textView.text];
+
 }
 
 - (void)didReceiveMemoryWarning {

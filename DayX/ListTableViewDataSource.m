@@ -7,18 +7,20 @@
 //
 
 #import "ListTableViewDataSource.h"
+#import "EntryController.h"
 
 @implementation ListTableViewDataSource
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    EntryController *newEntryController = [EntryController new];
     UITableViewCell*cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    cell.textLabel.text = [NSString stringWithFormat:@"Entry %d", (int)indexPath.row];
+    cell.textLabel.text = newEntryController.entries[indexPath.row];
     
 return cell;
     
 }
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
- 
-    return 5;
+    EntryController *newEntryController = [EntryController new];
+    return newEntryController.entries.count;
 }
 @end

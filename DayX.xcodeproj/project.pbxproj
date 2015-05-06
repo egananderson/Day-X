@@ -14,6 +14,8 @@
 		68FFDFE71AD8144B009F5D0A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68FFDFE61AD8144B009F5D0A /* Images.xcassets */; };
 		68FFDFEA1AD8144B009F5D0A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 68FFDFE81AD8144B009F5D0A /* LaunchScreen.xib */; };
 		68FFDFF61AD8144B009F5D0A /* DayXTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 68FFDFF51AD8144B009F5D0A /* DayXTests.m */; };
+		757807431AFAA84300C8C146 /* Entry.m in Sources */ = {isa = PBXBuildFile; fileRef = 757807421AFAA84300C8C146 /* Entry.m */; };
+		757807461AFAA89000C8C146 /* EntryController.m in Sources */ = {isa = PBXBuildFile; fileRef = 757807451AFAA89000C8C146 /* EntryController.m */; };
 		EBED0F4F1AF813C90045A3A9 /* ListTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = EBED0F4E1AF813C90045A3A9 /* ListTableViewDataSource.m */; };
 		EBED0F521AF81D3C0045A3A9 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EBED0F511AF81D3C0045A3A9 /* DetailViewController.m */; };
 /* End PBXBuildFile section */
@@ -42,6 +44,10 @@
 		68FFDFEF1AD8144B009F5D0A /* DayXTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DayXTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		68FFDFF41AD8144B009F5D0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68FFDFF51AD8144B009F5D0A /* DayXTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DayXTests.m; sourceTree = "<group>"; };
+		757807411AFAA84300C8C146 /* Entry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Entry.h; sourceTree = "<group>"; };
+		757807421AFAA84300C8C146 /* Entry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Entry.m; sourceTree = "<group>"; };
+		757807441AFAA89000C8C146 /* EntryController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EntryController.h; sourceTree = "<group>"; };
+		757807451AFAA89000C8C146 /* EntryController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EntryController.m; sourceTree = "<group>"; };
 		EBED0F4D1AF813C90045A3A9 /* ListTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListTableViewDataSource.h; sourceTree = "<group>"; };
 		EBED0F4E1AF813C90045A3A9 /* ListTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ListTableViewDataSource.m; sourceTree = "<group>"; };
 		EBED0F501AF81D3C0045A3A9 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
@@ -93,6 +99,10 @@
 				68FFDFE11AD8144B009F5D0A /* ListViewController.m */,
 				EBED0F4D1AF813C90045A3A9 /* ListTableViewDataSource.h */,
 				EBED0F4E1AF813C90045A3A9 /* ListTableViewDataSource.m */,
+				757807411AFAA84300C8C146 /* Entry.h */,
+				757807421AFAA84300C8C146 /* Entry.m */,
+				757807441AFAA89000C8C146 /* EntryController.h */,
+				757807451AFAA89000C8C146 /* EntryController.m */,
 				EBED0F501AF81D3C0045A3A9 /* DetailViewController.h */,
 				EBED0F511AF81D3C0045A3A9 /* DetailViewController.m */,
 				68FFDFE31AD8144B009F5D0A /* Main.storyboard */,
@@ -229,9 +239,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				757807431AFAA84300C8C146 /* Entry.m in Sources */,
 				EBED0F521AF81D3C0045A3A9 /* DetailViewController.m in Sources */,
 				68FFDFE21AD8144B009F5D0A /* ListViewController.m in Sources */,
 				68FFDFDF1AD8144B009F5D0A /* AppDelegate.m in Sources */,
+				757807461AFAA89000C8C146 /* EntryController.m in Sources */,
 				EBED0F4F1AF813C90045A3A9 /* ListTableViewDataSource.m in Sources */,
 				68FFDFDC1AD8144B009F5D0A /* main.m in Sources */,
 			);
