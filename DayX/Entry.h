@@ -14,4 +14,8 @@
 @property (strong, nonatomic) NSString *bodyText;
 @property (strong, nonatomic) NSDate *timestamp;
 
+- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+
+- (NSDictionary *)dictionaryRepresentation;
+
 @end

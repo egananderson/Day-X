@@ -42,16 +42,18 @@
 //    EntryController *entryController = [EntryController new];
 //    [entryController createEntryWithTitle:self.textField.text withBodyText:self.textView.text];
     
-    if (!self.entry) {
+    if (self.entry == nil) {
         self.entry = [[EntryController sharedInstance] createEntryWithTitle:self.textField.text withBodyText:self.textView.text];
     }
     else{
-        [self updateWithEntryMethod:self.entry];
+        self.entry.title = self.textField.text;
+        self.entry.bodyText = self.textView.text;
+        self.entry.timestamp = [NSDate new];
     }
     
+    [[EntryController sharedInstance] save];
     [self.navigationController popViewControllerAnimated:YES];
-    
-    
+
     
     //add this instance of entrycontrooler to tablview
 

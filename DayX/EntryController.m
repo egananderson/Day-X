@@ -7,6 +7,10 @@
 //
 
 #import "EntryController.h"
+#import "Entry.h"
+@import UIKit;
+
+static NSString * const allEntriesKey = @"allEntries";
 
 @interface EntryController ()
 
@@ -22,7 +26,7 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [EntryController new];
-        sharedInstance.entries = [NSArray new];
+        [sharedInstance loadFromPersistentStorage];
     });
     
     return sharedInstance;
@@ -30,16 +34,20 @@
 
 - (void) addEntry:(Entry *)entry
 {
-    NSMutableArray *replacementArray = [(NSArray *)self.entries mutableCopy];
-    [replacementArray addObject:entry];
+    NSLog(@"%@", entry.title);
+    //NSMutableArray *replacementArray = [(NSArray *)self.entries mutableCopy];
+    NSMutableArray *tempArray = [[NSMutableArray alloc]initWithArray:self.entries];
+    [tempArray addObject:entry];
     //possibly passing objects to new NSArray
-    self.entries = replacementArray;
+    self.entries = tempArray;
+    //[self saveToPersistentStorage];
 }
 
 - (void) removeEntry:(Entry *)entry{
     NSMutableArray *replacementArray = [(NSArray *)self.entries mutableCopy];
     [replacementArray removeObject:entry];
     self.entries = replacementArray;
+    [self saveToPersistentStorage];
 }
 
 - (Entry *)createEntryWithTitle:(NSString *)title withBodyText:(NSString *)bodyText
@@ -48,12 +56,55 @@
     entry.title = title;
     entry.bodyText = bodyText;
     entry.timestamp = [NSDate date];
-    
+
     [self addEntry:entry];
     
     return entry;
 
 }
 
+- (void)save
+{
+    [self saveToPersistentStorage];
+    
+}
+
+- (void)saveToPersistentStorage
+{
+    
+    NSMutableArray *tempArray = [NSMutableArray new];
+    NSLog(@"%d", (int)self.entries.count);
+    for (Entry *entry in self.entries) {
+        [tempArray addObject:[entry dictionaryRepresentation]];
+        NSLog(@"SAVE title:%@   bodyText:%@", entry.title, entry.bodyText);
+    }
+    NSLog(@"GOT HERE AGAIN");
+
+    [[NSUserDefaults standardUserDefaults] setObject:tempArray forKey:allEntriesKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+    
+}
+
+-(void)loadFromPersistentStorage
+{
+    NSMutableArray *showingArray = [NSMutableArray new];
+    NSArray *loadArray = [[NSUserDefaults standardUserDefaults] objectForKey:allEntriesKey];
+    for (NSDictionary *dictionary in loadArray) {
+        Entry *entry = [[Entry alloc] initWithDictionary:dictionary];
+        NSLog(@"LOAD title:%@   bodyText:%@", entry.title, entry.bodyText);
+        [showingArray addObject:entry];
+    }
+    
+    self.entries = showingArray;
+    
+}
+
 @end
+
+
+
+
+
+
+
 

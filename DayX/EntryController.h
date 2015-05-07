@@ -23,5 +23,7 @@
 
 - (Entry *)createEntryWithTitle:(NSString *)title withBodyText:(NSString *)bodyText;
 
+- (void) save;
+
 
 @end
